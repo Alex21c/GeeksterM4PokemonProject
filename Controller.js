@@ -6,6 +6,12 @@ class Controller{
     this.model = model;
 
     this.formSearchQuery = document.querySelector('form#formSearchQuery');
+    this.btnLoadMorePokemons = document.querySelector('button#btnLoadMorePokemons');
+    this.btnLoadMorePokemons.addEventListener('click', async()=>{
+      await this.model.fetchAllPokemons();
+      this.view.showAllPokemons();
+      // console.log(this.model.allPokemons);
+    });
     
     this.formSearchQuery.addEventListener('submit', (event)=>{
       event.preventDefault();
@@ -22,8 +28,7 @@ class Controller{
   }
 
   async initialLoadPokemons(){
-    await this.model.fetchAllPokemons();
-    
+    await this.model.fetchAllPokemons();    
     this.view.showAllPokemons();
   }
 
