@@ -25,7 +25,7 @@ class View{
     // handling search query
       this.inputSearch.addEventListener('input', (event)=>{
         let query =inputSearch.value.toLowerCase();
-        console.log(query);
+        // console.log(query);
         this.pokemonsCurrentlyInTheResultsDiv.clear();
         this.divResults.innerHTML = '';
         if(query === ''){
