@@ -3,7 +3,7 @@ class Model{
   constructor(){
     this.allPokemons = [];  
     this.offset=1;
-    this.limit=1;
+    this.limit=200;
     this.pokemonsGifs=[
       'arrokuda.gif',
       'articuno.gif',
