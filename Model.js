@@ -97,7 +97,7 @@ class Model{
             pokemon.types=types.reduce((accumulator, value)=>{
               accumulator.push(value.type.name);              
               return accumulator;
-            }, []).join(', ');
+            }, []);
             
             // console.log(pokemon.posterImg);
           }catch(error){
