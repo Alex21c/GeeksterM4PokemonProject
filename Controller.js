@@ -8,19 +8,19 @@ class Controller{
     this.formSearchQuery = document.querySelector('form#formSearchQuery');
     this.btnLoadMorePokemons = document.querySelector('button#btnLoadMorePokemons');
     this.btnLoadMorePokemons.addEventListener('click', async()=>{
+      btnLoadMorePokemons.innerText = 'Loading ...';
+      btnLoadMorePokemons.disabled =true;      
       await this.model.fetchAllPokemons();
-      this.view.showAllPokemons();
+      this.view.showAllPokemons(this.model.allPokemons);
+      this.btnLoadMorePokemons.innerText = 'Load more Pokemons';
+      btnLoadMorePokemons.disabled =false;     
       // console.log(this.model.allPokemons);
     });
     
-    this.formSearchQuery.addEventListener('submit', (event)=>{
-      event.preventDefault();
-      this.handleUserRequests();
 
-    });
 
     this.initialLoadPokemons();
-
+    
 
     
 
@@ -29,7 +29,7 @@ class Controller{
 
   async initialLoadPokemons(){
     await this.model.fetchAllPokemons();    
-    this.view.showAllPokemons();
+    this.view.showAllPokemons(this.model.allPokemons);
   }
 
   async handleUserRequests(){

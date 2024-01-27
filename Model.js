@@ -3,7 +3,7 @@ class Model{
   constructor(){
     this.allPokemons = [];  
     this.offset=1;
-    this.limit=1;
+    this.limit=10;
     this.pokemonsGifs=[
       'arrokuda.gif',
       'articuno.gif',
@@ -45,7 +45,7 @@ class Model{
       'vivillon.gif',
       'xatu.gif',
     ];
-    console.log(this.getRandomPokemonGif());
+    // console.log(this.getRandomPokemonGif());
   }
   
   getRandomPokemonGif(){
@@ -88,11 +88,16 @@ class Model{
             // throw new Error('testing')
             let response = await fetch(pokemon.url);
             let jsonResponse = await response.json();
-            let {sprites, abilities, stats, types} = jsonResponse;                    
+            let {sprites, abilities, stats, types, height, weight} = jsonResponse;                    
             pokemon.posterImg = sprites.other['official-artwork'].front_default;
-            pokemon.showDownGifImg = sprites.other.showdown.front_default;
+            pokemon.showDownGifImg = {
+              front: sprites.other.showdown.front_default,
+              back: sprites.other.showdown.back_default,
+            }
             pokemon.abilities = abilities;
             pokemon.stats = stats;
+            pokemon.height = height;
+            pokemon.weight = weight;
             pokemon.name=pokemon.name.replaceAll('-', ' ');            
             pokemon.types=types.reduce((accumulator, value)=>{
               accumulator.push(value.type.name);              
@@ -107,7 +112,7 @@ class Model{
         }));
    
 
-      console.log(this.allPokemons);
+      // console.log(this.allPokemons);
 
     }catch(error){
       console.error('Alex21C-ERROR: Unable to load content from API.', error);

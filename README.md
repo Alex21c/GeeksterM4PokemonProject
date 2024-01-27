@@ -5,6 +5,7 @@
 # Tech. Stack Used:
 + [MVC Framework](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
 + [FetchAPI](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
++ [GSAP Javascript Animation Library](https://gsap.com/)
 + [HTML5](https://en.wikipedia.org/wiki/HTML5)
 + [CSS3](https://en.wikipedia.org/wiki/CSS)
 + [Tailwind CSS](https://tailwindcss.com/)
