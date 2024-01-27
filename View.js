@@ -10,6 +10,8 @@ class View{
     this.selectPokemonTypes = document.querySelector('select#selectPokemonTypes');
     this.inputSearch = document.querySelector('input#inputSearch');
     this.btnReset = document.querySelector('button#btnReset');
+    this.SpanHowManyPokemonsLoaded = document.querySelector('span#SpanHowManyPokemonsLoaded');
+
     // handling reset btn
       this.btnReset.addEventListener('click', (event)=>{
         event.preventDefault();
@@ -17,7 +19,7 @@ class View{
         this.loadPokemonTypesIntoSelectMenu();
         this.inputSearch.value='';
         this.divResults.innerHTML = '';
-        this.showAllPokemons(this.model.allPokemons, 0);
+        this.showAllPokemons(this.model.allPokemons, 100);
       });
 
     // handling search query
@@ -26,7 +28,7 @@ class View{
         this.pokemonsCurrentlyInTheResultsDiv.clear();
         this.divResults.innerHTML = '';
         if(query === ''){
-          this.showAllPokemons(this.model.allPokemons, 0);
+          this.showAllPokemons(this.model.allPokemons, 100);
         }else{
           this.showAllPokemons(
             this.model.allPokemons.filter((pokemon)=>{
@@ -184,8 +186,10 @@ class View{
 
 
                 this.divResults.append(divWrapperPokemon);
+                this.updateSpanHowManyPokemonsLoaded(this.SpanHowManyPokemonsLoaded, this.model.offset);
                 // marking pokemon as shown to user
                   this.pokemonsCurrentlyInTheResultsDiv.add(pokemon.name);
+                  
                   // console.log(pokemon);
               }else{
                 // console.log(`skipping ${pokemon.name} as it is already loaded and shown to user!`);
@@ -213,6 +217,10 @@ class View{
       // //  console.log(this.model.allPokemons);
 
 
+  }
+
+  updateSpanHowManyPokemonsLoaded(SpanHowManyPokemonsLoaded, offset){
+    SpanHowManyPokemonsLoaded.innerText = `(Loaded ${offset-1} pokemons out of 1300)`;
   }
   generateFrontCard(pokemon, bgColor){
     let divCardFront = document.createElement('div');   

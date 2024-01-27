@@ -115,4 +115,11 @@ h1{
   h1#topHeading a {
     font-size: 1rem;
   }
+
+  div.pokemon-card{
+    width:18rem;
+  }
+  header form{
+    padding:1rem;
+  }
 }
