@@ -30,8 +30,12 @@ class Controller{
   }
 
   async initialLoadPokemons(){
+    spanLoadMorePokemons.innerText = 'Loading ...';
+    btnLoadMorePokemons.disabled =true;       
     await this.model.fetchAllPokemons();    
     this.view.showAllPokemons(this.model.allPokemons);
+    this.spanLoadMorePokemons.innerText = 'Load more Pokemons';
+    btnLoadMorePokemons.disabled =false;       
   }
 
   async handleUserRequests(){
